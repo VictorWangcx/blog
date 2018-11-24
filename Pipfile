@@ -1,0 +1,33 @@
+[[source]]
+url = "https://mirrors.aliyun.com/pypi/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+ipython = "*"
+mysqlclient = "*"
+djangorestframework = "*"
+gunicorn = "*"
+gevent = "*"
+pyjwt = "*"
+requests = "==2.20.0"
+django-redis = "*"
+pillow = "*"
+markdown = "*"
+
+[dev-packages]
+ipython = "*"
+pytest = "*"
+coverage = "*"
+ipdb = "*"
+"flake8" = "*"
+"pep8-naming" = "*"
+pylint = "*"
+pylint-django = "*"
+pre-commit = "*"
+pre-commit-hooks = "*"
+django-rest-swagger = "*"
+
+[requires]
+python_version = "3.6"
