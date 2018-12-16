@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/', include('article.url')),
     path('user/', include('user.url')),
+    path('crm', include('crm.url'))
 ]

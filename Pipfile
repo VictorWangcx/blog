@@ -18,6 +18,8 @@ markdown = "*"
 django-ckeditor = "*"
 pygments = "*"
 django-mdeditor = "*"
+django-filters = "*"
+django-filter = "*"
 
 [dev-packages]
 ipython = "*"

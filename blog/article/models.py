@@ -25,6 +25,11 @@ class Article(models.Model):
                              verbose_name="标签",
                              related_name="article_user",on_delete=models.CASCADE)
 
+    readcnt = models.IntegerField(verbose_name="阅读数量", default=0)
+    upvote = models.IntegerField(verbose_name="点赞数", default=0)
+
+    state = models.BooleanField(verbose_name="发布状态", default=True)
+
     is_delete = models.BooleanField(default=False)
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
     update_time = models.DateTimeField('更新时间', auto_now=True)
