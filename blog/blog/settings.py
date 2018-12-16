@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'article',
     'rest_framework',
     'user',
+    'static',
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
@@ -156,9 +158,17 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/blog/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'blog/static/')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'blog/static/'),
+)
 
 TEMPLATES = [
     {
@@ -180,3 +190,34 @@ TEMPLATES = [
     },
 ]
 
+
+# Ckeditor
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+# CKEDITOR_JQUERY_URL = 'admin/js/jquery.min.js'
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_TOOLBAR_CUSTOM = [
+    ['Undo', 'Redo', '-', 'SelectAll', 'RemoveFormat'],
+    ['Bold', 'Italic', 'Underline', 'Strike'],
+    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+    ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+    ['Link', 'Image', 'Table', 'HorizontalRule'],
+    ['Styles', 'Format', 'Font', 'LineHeight', 'FontSize'],
+    ['TextColor', 'BGColor'],
+    ['Maximize', 'ShowBlocks']
+]
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        'language': 'zh-cn',
+        'uiColor': '#E7E7E7',
+        'toolbar': CKEDITOR_TOOLBAR_CUSTOM,
+        'height': 400,
+        'width': '100%',
+        'image_previewText': ' ',
+        'extraPlugins': 'uploadimage',
+        'extraAllowedContent': 'iframe[*]',
+        'removeDialogTabs': ('image:Link;image:advanced;link:target;'
+                             'link:upload;link:advanced'),
+    }
+}

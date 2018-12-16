@@ -1,8 +1,11 @@
+"""article.models"""
 from uuid import uuid4
 
 from django.db import models
 
-# Create your models here.
+from mdeditor.fields import MDTextField
+
+from common.common import PathAndRename
 
 
 class Article(models.Model):
@@ -10,7 +13,11 @@ class Article(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid4, unique=True)
     title = models.CharField('题目', max_length=50)
     desc = models.CharField('简述', max_length=100)
-    content = models.TextField('内容')
+    photo = models.ImageField(
+        verbose_name='商品图片',
+        upload_to=PathAndRename('article/%Y/%m')
+    )
+    content = MDTextField(verbose_name='博客正文', default='')  # 注意为MDTextField()
     category = models.ForeignKey('ArticleCategory',
                                  verbose_name="分类",
                                  related_name='article_category', on_delete=models.CASCADE)
